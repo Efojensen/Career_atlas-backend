@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const employerSchema = new mongoose.Schema({
+const employerSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -20,3 +20,6 @@ export const employerSchema = new mongoose.Schema({
         type: [String],
     },
 });
+
+const employerModel = mongoose.model('Employer', employerSchema);
+export default employerModel;

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const seekerSchema = new mongoose.Schema({
+const seekerSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -30,3 +30,6 @@ export const seekerSchema = new mongoose.Schema({
         type: Number,
     },
 });
+
+const seekerModel = mongoose.model('JobSeeker', seekerSchema);
+export default seekerModel;
