@@ -1,10 +1,15 @@
-import express from "express";
-import mongoose from "mongoose";
+import express from 'express';
+import mongoose from 'mongoose';
 import jobRoutes from './routes/jobs';
 import userRoutes from './routes/users';
+import empRoutes from './routes/employer';
 
 const PORT = 3000;
 const app = express();
+
+app.use('/emp', empRoutes);
+app.use('/job', jobRoutes);
+app.use('/user', userRoutes);
 
 async function connectToDB () {
     try {
@@ -14,9 +19,6 @@ async function connectToDB () {
         console.log(error);
     }
 }
-
-app.use('/jobs', jobRoutes);
-app.use('/users', userRoutes);
 
 app.listen(PORT, () => {
     connectToDB();
