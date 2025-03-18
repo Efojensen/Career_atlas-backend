@@ -1,9 +1,12 @@
 import Router from 'express'
-import { signIn, signUp } from './userControllers';
+import { validateUsrData } from '../../middleware/validation';
+import { signIn, signUp, getAllUsers } from './userControllers';
 
 const router = Router()
 
-router.post('/register', signUp);
+router.get('/', getAllUsers)
+
+router.post('/register', validateUsrData(), signUp);
 
 router.post('/login', signIn);
 

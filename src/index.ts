@@ -7,6 +7,7 @@ import empRoutes from './routes/employer';
 const PORT = 3000;
 const app = express();
 
+app.use(express.json());
 app.use('/emp', empRoutes);
 app.use('/job', jobRoutes);
 app.use('/user', userRoutes);
