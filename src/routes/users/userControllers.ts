@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import seekerModel from '../../db/seekerSchema';
 
@@ -36,5 +37,33 @@ export async function signUp(req: Request, res: Response) {
 }
 
 export async function signIn(req: Request, res: Response) {
+    try {
+        const { email, password } = req.usrCredentials;
 
-}
+        const [registeredUser] = await seekerModel.find({ email });
+
+        if (!registeredUser) {
+            res.status(401).json({ error: 'Authentication failed' });
+            return;
+        }
+
+        const matched = await bcrypt.compare(password, registeredUser.password);
+
+        if (!matched) {
+            res.status(401).json({ error: 'Authentication failed' });
+            return;
+        }
+
+        const token = jwt.sign(
+            {email: registeredUser.email},
+            process.env['JWT_SECRET']!,
+            { expiresIn: '12h' },
+        );
+
+        req.headers.authorization = token;
+
+        res.status(200).json({ token, registeredUser })
+    } catch (error) {
+        res.status(500).json({ error: `Something went wrong: ${error}` })
+    }
+};
