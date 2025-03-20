@@ -26,12 +26,16 @@ const jobSchema = new mongoose.Schema({
     timePosted: {
         type: Date,
         required: true,
+        default: Date.now()
     },
     pay: {
         type: Number,
         required: true,
     },
+    jobLocations: {
+        type: [String],
+    }
 });
 
-const jobModel = mongoose.model('Job', jobSchema)
+const jobModel = mongoose.model('Job', jobSchema);
 export default jobModel;

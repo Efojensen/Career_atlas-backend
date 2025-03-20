@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import jobRoutes from './routes/jobs';
@@ -7,6 +8,7 @@ import empRoutes from './routes/employer';
 const PORT = 3000;
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use('/emp', empRoutes);
 app.use('/job', jobRoutes);

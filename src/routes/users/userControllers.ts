@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import seekerModel from '../../db/seekerSchema';
+import { OAuth2Client } from 'google-auth-library';
 
 export async function getAllUsers(req: Request, res: Response) {
     const users = await seekerModel.find()
@@ -67,3 +68,19 @@ export async function signIn(req: Request, res: Response) {
         res.status(500).json({ error: `Something went wrong: ${error}` })
     }
 };
+
+export async function signInWithGoogle(req: Request, res: Response) {
+    try {
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+        res.header('Referrer-Policy', 'no-referrer-when-downgrade');
+
+        const redirectUrl = 'http://localhost:3000';
+        const oAuth2Client = new OAuth2Client(
+            process.env["GOOGLE_ID"]!,
+            process.env["GOOGLE_CLIENT_SECRET"]!,
+            redirectUrl
+        );
+    } catch (error) {
+        
+    }
+}

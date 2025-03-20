@@ -8,6 +8,16 @@ declare global {
                 userName: string;
                 password: string;
                 student: boolean;
+            },
+            jobData: {
+                pay: number;
+                jobName: string;
+                jobType: string;
+                jobImage?: string;
+                benefits?: [string];
+                jobCategory: string;
+                jobDescription: string;
+                jobLocations?: [string];
             }
         }
     }
