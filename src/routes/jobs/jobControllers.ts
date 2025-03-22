@@ -27,3 +27,9 @@ export async function createJob(req: Request, res: Response) {
         })
     }
 }
+
+export async function getAllJobs(req: Request, res: Response) {
+    const jobs = await jobModel.find();
+
+    res.status(200).json({jobs: jobs})
+}

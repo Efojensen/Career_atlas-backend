@@ -11,6 +11,7 @@ declare global {
             },
             jobData: {
                 pay: number;
+                empId: string;
                 jobName: string;
                 jobType: string;
                 jobImage?: string;

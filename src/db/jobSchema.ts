@@ -34,6 +34,10 @@ const jobSchema = new mongoose.Schema({
     },
     jobLocations: {
         type: [String],
+    },
+    empId: {
+        type: String,
+        required: true,
     }
 });
 

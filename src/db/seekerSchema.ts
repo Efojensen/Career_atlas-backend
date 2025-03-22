@@ -15,6 +15,7 @@ const seekerSchema = new mongoose.Schema({
     },
     student: {
         type: Boolean,
+        default: true,
         required: true,
     },
     profile_pic: {
@@ -28,6 +29,9 @@ const seekerSchema = new mongoose.Schema({
     },
     yearsOfExperience: {
         type: Number,
+    },
+    resume: {
+        type: String,
     },
 });
 
