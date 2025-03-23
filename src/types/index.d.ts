@@ -1,3 +1,5 @@
+import { JwtPayload } from "jsonwebtoken";
+
 export {}
 
 declare global {
@@ -9,16 +11,24 @@ declare global {
                 password: string;
                 student: boolean;
             },
+            empCredentials: {
+                email: string;
+                password: string;
+                compName: string;
+                compDomain?: string;
+                compLocations?: [string];
+            }
             jobData: {
                 pay: number;
-                empId: string;
                 jobName: string;
                 jobType: string;
+                country?: string;
                 jobImage?: string;
                 benefits?: [string];
                 jobCategory: string;
                 jobDescription: string;
                 jobLocations?: [string];
+                empId?: string | JwtPayload;
             }
         }
     }

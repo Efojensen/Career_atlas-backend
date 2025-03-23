@@ -7,10 +7,12 @@ export async function createJob(req: Request, res: Response) {
 
         const newJob = new jobModel({
             pay: data.pay,
+            empId: data.empId,
             jobName: data.jobName,
             jobType: data.jobType,
             benefits: data.benefits,
             jobImage: data.jobImage,
+            jobCountry: data.country,
             jobCategory: data.jobCategory,
             jobLocations: data.jobLocations,
             jobDescription: data.jobDescription,

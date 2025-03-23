@@ -41,6 +41,11 @@ export async function signIn(req: Request, res: Response) {
     try {
         const { email, password } = req.usrCredentials;
 
+        if (!email || !password) {
+            res.status(400).json({ msg: 'Email and password are required' });
+            return;
+        }
+
         const [registeredUser] = await seekerModel.find({ email });
 
         if (!registeredUser) {
@@ -56,16 +61,14 @@ export async function signIn(req: Request, res: Response) {
         }
 
         const token = jwt.sign(
-            {email: registeredUser.email},
+            { email: registeredUser.email },
             process.env['JWT_SECRET']!,
             { expiresIn: '12h' },
         );
 
-        req.headers.authorization = token;
-
         res.status(200).json({ token, registeredUser })
     } catch (error) {
-        res.status(500).json({ error: `Something went wrong: ${error}` })
+        res.status(500).json({ error: 'Something went wrong', err: error })
     }
 };
 
@@ -81,6 +84,6 @@ export async function signInWithGoogle(req: Request, res: Response) {
             redirectUrl
         );
     } catch (error) {
-        
+
     }
 }

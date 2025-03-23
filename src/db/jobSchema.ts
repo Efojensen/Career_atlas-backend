@@ -23,6 +23,11 @@ const jobSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    empId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Employers',
+        required: true,
+    },
     timePosted: {
         type: Date,
         required: true,
@@ -35,9 +40,8 @@ const jobSchema = new mongoose.Schema({
     jobLocations: {
         type: [String],
     },
-    empId: {
+    jobCountry: {
         type: String,
-        required: true,
     }
 });
 

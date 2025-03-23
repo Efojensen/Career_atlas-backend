@@ -9,14 +9,14 @@ const employerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    orgName: {
+    compName: {
         type: String,
         required: true,
     },
-    orgDomain: {
+    compDomain: {
         type: String,
     },
-    orgLocations: {
+    compLocations: {
         type: [String],
     },
 });
