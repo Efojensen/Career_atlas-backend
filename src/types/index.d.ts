@@ -24,11 +24,11 @@ declare global {
                 jobType: string;
                 country?: string;
                 jobImage?: string;
-                benefits?: [string];
                 jobCategory: string;
                 jobDescription: string;
-                jobLocations?: [string];
+                jobLocations?: string | [string];
                 empId?: string | JwtPayload;
+                benefits?: string | [string];
             }
         }
     }

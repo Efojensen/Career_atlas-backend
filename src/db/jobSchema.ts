@@ -22,6 +22,7 @@ const jobSchema = new mongoose.Schema({
     jobType: {
         type: String,
         required: true,
+        default: 'on-site',
     },
     empId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -42,6 +43,7 @@ const jobSchema = new mongoose.Schema({
     },
     jobCountry: {
         type: String,
+        default: 'Ghana'
     }
 });
 
