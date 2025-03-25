@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Applicants - Career Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logo img {
+      height: 40px;
+    }
+
+    .header-logo h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .applicant-list {
+      width: 90%;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .applicant-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .applicant-card:last-child {
+      border-bottom: none;
+    }
+
+    .applicant-card button {
+      background: #0072ff;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .details-section {
+      display: none;
+      padding: 20px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    .details-section button {
+      margin: 10px 5px;
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .accept {
+      background: #28a745;
+      color: white;
+    }
+
+    .reject {
+      background: #dc3545;
+      color: white;
+    }
+
+    .download {
+      background: #007bff;
+      color: white;
+    }
+
+    .home-button {
+      background: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-logo">
+      <img src="Career-Atlas-Logo-white.png" alt="Career Atlas Logo">
+      <h1>Managing Applicants</h1>
+    </div>
+    <a href="Employer.html" class="home-button">Home</a>
+  </header>
+
+  <div class="applicant-list">
+    <div class="applicant-card">
+      <p>John Doe - Software Engineer</p>
+      <button onclick="toggleDetails('details1')">View Details</button>
+    </div>
+    <div id="details1" class="details-section">
+      <p>Resume: <a href="resume-johndoe.pdf" class="download" download>Download</a></p>
+      <button class="accept">Accept</button>
+      <button class="reject">Reject</button>
+    </div>
+
+    <div class="applicant-card">
+      <p>Prince Ankrah - FrontEnd Engineer</p>
+      <button onclick="toggleDetails('details1')">View Details</button>
+    </div>
+    <div id="details1" class="details-section">
+      <p>Resume: <a href="resume-johndoe.pdf" class="download" download>Download</a></p>
+      <button class="accept">Accept</button>
+      <button class="reject">Reject</button>
+    </div>
+
+    <div class="applicant-card">
+      <p>Esther Coffie - Back End Engineer</p>
+      <button onclick="toggleDetails('details1')">View Details</button>
+    </div>
+    <div id="details1" class="details-section">
+      <p>Resume: <a href="resume-johndoe.pdf" class="download" download>Download</a></p>
+      <button class="accept">Accept</button>
+      <button class="reject">Reject</button>
+    </div>
+
+    <div class="applicant-card">
+      <p>Jane Smith - UX Designer</p>
+      <button onclick="toggleDetails('details2')">View Details</button>
+    </div>
+    <div id="details2" class="details-section">
+      <p>Resume: <a href="resume-janesmith.pdf" class="download" download>Download</a></p>
+      <button class="accept">Accept</button>
+      <button class="reject">Reject</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleDetails(id) {
+      var details = document.getElementById(id);
+      if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block";
+      } else {
+        details.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

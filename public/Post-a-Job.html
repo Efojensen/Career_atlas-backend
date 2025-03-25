@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Job - Career Atlas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" sizes="180x180" href="./Career-Atlas-icon.ico">
+  <style>
+    /* Loading Animation
+       You can modify the animation timing, style, or placement by editing this section.
+       The loading animation is placed inside #loading-screen.
+    */
+    :root {
+      --primary-color: #2563eb;
+      /* blue */
+      --secondary-color: #4b5563;
+      /* gray */
+      --background-color: #f3f4f6;
+      --border-color: #e5e7eb;
+    }
+
+    body {
+      background-color: var(--background-color);
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    .subtitle {
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--secondary-color);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .inline-fields {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .conditional-field {
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 2rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button.primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    button.secondary {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    button.text-button {
+      background: none;
+      color: var(--primary-color);
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* Country Selector Styles */
+    .country-selector {
+      position: relative;
+    }
+
+    #country-dropdown {
+      position: absolute;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      background: white;
+      margin-top: 5px;
+      z-index: 100;
+      display: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    #country-dropdown option {
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    #country-dropdown option:hover {
+      background-color: var(--background-color);
+    }
+
+    .country-selector::after {
+      content: "⌄";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--secondary-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: 1rem;
+      }
+
+      .inline-fields {
+        flex-direction: column;
+      }
+
+      #country-dropdown {
+        max-height: 150px;
+      }
+    }
+
+    /* Enhanced Textarea Styling */
+    .float-label textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Radio Button Styling */
+    .radio-group {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .radio-option {
+      position: relative;
+      padding-left: 2rem;
+      cursor: pointer;
+    }
+
+    .radio-option input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      height: 1.2rem;
+      width: 1.2rem;
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+    }
+
+    .radio-option input:checked~.checkmark {
+      border-color: var(--primary-color);
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 3px;
+      left: 3px;
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--primary-color);
+    }
+
+    .radio-option input:checked~.checkmark:after {
+      display: block;
+    }
+
+    /* Checkbox Styling */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .checkbox-option {
+      position: relative;
+      padding-left: 2rem;
+      cursor: pointer;
+    }
+
+    .checkbox-option input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .checkmark-box {
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      height: 1.2rem;
+      width: 1.2rem;
+      border: 2px solid var(--border-color);
+      border-radius: 4px;
+    }
+
+    .checkbox-option input:checked~.checkmark-box {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .checkmark-box:after {
+      content: "✓";
+      position: absolute;
+      display: none;
+      color: white;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .checkbox-option input:checked~.checkmark-box:after {
+      display: block;
+    }
+
+    /* Conditional Field Adjustments */
+    .conditional-field .float-label {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loading Animation (Modified as requested) -->
+  <div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
+    <div class="flex flex-row gap-2">
+      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+    </div>
+  </div>
+
+  <!-- Main Content; initially hidden until page load -->
+  <div id="main-content" class="hidden">
+    <div class="form-container">
+      <h1>Post a Job</h1>
+      <p class="subtitle">Fill in the details below to list your job opening</p>
+
+      <!-- Form with backend integration placeholder -->
+      <form id="postJobForm">
+        <!-- Job Details Section with Floating Labels -->
+        <div class="form-section">
+          <h3>Job Details</h3>
+          <div class="form-grid">
+            <div class="float-label">
+              <input type="text" id="job-title" required>
+              <label for="job-title">Job Title*</label>
+            </div>
+            <div class="float-label">
+              <input type="text" id="company-name" required>
+              <label for="company-name">Company Name*</label>
+            </div>
+            <div class="float-label country-selector">
+              <input type="text" id="country-input" required>
+              <label for="country-input">Country*</label>
+              <select id="country-dropdown" size="5">
+                <!-- Options populated by JavaScript -->
+              </select>
+            </div>
+            <div class="float-label">
+              <input type="text" id="location" required>
+              <label for="location">Location*</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Type Section -->
+        <div class="form-section">
+          <h3>Job Type</h3>
+          <div class="inline-fields">
+            <select id="job-type">
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Contract</option>
+              <option>Internship</option>
+            </select>
+            <select id="job-category">
+              <option>Engineering</option>
+              <option>Design</option>
+              <option>Marketing</option>
+              <option>Sales</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Job Description Section -->
+        <div class="form-section">
+          <h3>Job Description*</h3>
+          <textarea id="job-description" placeholder="Describe the role, responsibilities, and requirements..." rows="6"
+            required></textarea>
+        </div>
+
+        <!-- Salary Range Section -->
+        <div class="form-section">
+          <h3>Salary Range</h3>
+          <div class="inline-fields">
+            <div class="float-label">
+              <select id="currency">
+                <option>USD</option>
+                <option>EUR</option>
+                <option>GBP</option>
+              </select>
+              <label for="currency">Currency</label>
+            </div>
+            <div class="float-label">
+              <input type="number" id="min-salary">
+              <label for="min-salary">Minimum Salary</label>
+            </div>
+            <div class="float-label">
+              <input type="number" id="max-salary">
+              <label for="max-salary">Maximum Salary</label>
+            </div>
+          </div>
+          <div class="checkbox-group" style="margin-top: 1rem;">
+            <label><input type="checkbox" id="negotiable"> Negotiable</label>
+          </div>
+        </div>
+
+        <!-- Application Details Section -->
+        <div class="form-section">
+          <h3>Application Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="deadline">Application Deadline</label>
+              <input type="date" id="deadline">
+            </div>
+            <div class="form-group">
+              <label>How to Apply*</label>
+              <div class="radio-group">
+                <label><input type="radio" name="apply-method" value="email" required> Email</label>
+                <label><input type="radio" name="apply-method" value="url" required> URL</label>
+              </div>
+              <input type="email" placeholder="application@company.com" class="conditional-field" data-type="email">
+              <input type="url" placeholder="https://company.com/apply" class="conditional-field" data-type="url">
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Options Section -->
+        <div class="form-section">
+          <h3>Additional Options</h3>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="remote"> Remote-friendly</label>
+            <label><input type="checkbox" id="visa"> Visa sponsorship available</label>
+            <label><input type="checkbox" id="hide-company"> Hide company name</label>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons flex gap-4 justify-end mt-8">
+          <button type="button"
+            class="inline-block py-2 px-6 rounded-l-xl rounded-t-xl border border-blue-500 text-blue-500 bg-white hover:bg-blue-500 hover:text-white transition duration-200 font-bold leading-loose">
+            Preview
+          </button>
+          <button type="submit"
+            class="inline-block py-2 px-6 rounded-l-xl rounded-t-xl bg-blue-500 hover:bg-white hover:text-blue-500 focus:text-blue-500 focus:bg-gray-200 text-gray-50 transition duration-200 font-bold leading-loose">
+            Post Job
+          </button>
+          <button type="button"
+            class="inline-block py-2 px-6 rounded-l-xl rounded-t-xl bg-transparent text-blue-500 hover:underline transition duration-200 font-bold leading-loose">
+            Save Draft
+          </button>
+        </div>
+      </form>
+      <!-- Placeholder for backend integration:
+           TODO: Add JavaScript code here to handle form submission, save data to your backend, 
+           and provide appropriate feedback to the user.
+      -->
+    </div>
+  </div>
+
+  <script>
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("postJobForm");
+      const applyMethodRadios = document.querySelectorAll('input[name="apply-method"]');
+      const conditionalFields = document.querySelectorAll(".conditional-field");
+
+      // Hide loading screen
+      setTimeout(() => {
+        document.getElementById("loading-screen").classList.add("hidden");
+        document.getElementById("main-content").classList.remove("hidden");
+      }, 1000);
+
+      // Toggle email/URL input fields based on selected application method
+      applyMethodRadios.forEach(radio => {
+        radio.addEventListener("change", function () {
+          conditionalFields.forEach(field => field.style.display = "none");
+          document.querySelector(`[data-type="${this.value}"]`).style.display = "block";
+        });
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default submission
+
+        let isValid = true;
+        let errorMessage = "";
+
+        // Validate required fields
+        const jobTitle = document.getElementById("job-title").value.trim();
+        const companyName = document.getElementById("company-name").value.trim();
+        const country = document.getElementById("country-input").value.trim();
+        const location = document.getElementById("location").value.trim();
+        const jobDescription = document.getElementById("job-description").value.trim();
+        const selectedMethod = document.querySelector('input[name="apply-method"]:checked');
+        const minSalary = document.getElementById("min-salary").value;
+        const maxSalary = document.getElementById("max-salary").value;
+
+        if (!jobTitle || !companyName || !country || !location || !jobDescription || !selectedMethod) {
+          errorMessage = "Please fill out all required fields.";
+          isValid = false;
+        }
+
+        // Validate salary range
+        if (minSalary && maxSalary && Number(minSalary) > Number(maxSalary)) {
+          errorMessage = "Minimum salary cannot be greater than maximum salary.";
+          isValid = false;
+        }
+
+        // Validate application method input
+        const selectedField = document.querySelector(`[data-type="${selectedMethod?.value}"]`);
+        if (selectedField && selectedField.style.display === "block" && !selectedField.value.trim()) {
+          errorMessage = "Please provide a valid application email or URL.";
+          isValid = false;
+        }
+
+        if (!isValid) {
+          alert(errorMessage); // Display error message
+          return;
+        }
+
+        // Simulate form submission
+        alert("Job posted successfully!");
+        window.location.href = "Employer.html"; // Redirect to success page
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

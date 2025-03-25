@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Calendar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/x-icon" sizes="180x180" href="./Career-Atlas-icon.ico">
+  <style>
+    /* Optional: smooth transitions for calendar cells */
+    .calendar-cell:hover {
+      background-color: #eff6ff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="flex h-screen">
+    <!-- Main Calendar Area -->
+    <div class="flex-1 p-4 overflow-auto">
+      <div class="flex justify-between items-center mb-4">
+        <button id="prevMonth" class="text-blue-600 px-2">Prev</button>
+        <h2 id="monthYear" class="text-2xl font-bold"></h2>
+        <button id="nextMonth" class="text-blue-600 px-2">Next</button>
+      </div>
+      <!-- Days of week header -->
+      <div class="grid grid-cols-7 text-center font-semibold border-b pb-2">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <!-- Calendar grid -->
+      <div id="calendarGrid" class="grid grid-cols-7 gap-1 mt-2"></div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="w-1/3 border-l p-4">
+      <!-- Current Date and Time -->
+      <div id="currentDateTime" class="mb-6 text-right text-xl font-semibold text-blue-600"></div>
+
+      <!-- Booking Form -->
+      <div class="mb-6">
+        <h3 class="text-lg font-bold mb-2">Make a Booking</h3>
+        <form id="bookingForm" class="space-y-4">
+          <input type="date" id="bookingDate" class="w-full border p-2 rounded" required>
+          <input type="time" id="bookingTime" class="w-full border p-2 rounded" required>
+          <textarea id="bookingNote" class="w-full border p-2 rounded" placeholder="Enter a note"></textarea>
+          <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded">Book Now</button>
+        </form>
+      </div>
+
+      <!-- Reminders / Notifications -->
+      <div>
+        <h3 class="text-lg font-bold mb-2">Reminders & Notifications</h3>
+        <ul id="reminderList" class="space-y-2"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Calendar logic
+    let currentDate = new Date();
+
+    function renderCalendar(date) {
+      const calendarGrid = document.getElementById('calendarGrid');
+      calendarGrid.innerHTML = ''; // clear previous cells
+
+      // Set the month/year heading
+      const monthYearEl = document.getElementById('monthYear');
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const month = date.getMonth();
+      const year = date.getFullYear();
+      monthYearEl.textContent = `${monthNames[month]} ${year}`;
+
+      // Get first day of the month
+      const firstDay = new Date(year, month, 1);
+      const startingDay = firstDay.getDay();
+
+      // Number of days in the month
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Fill in empty cells before the first day
+      for (let i = 0; i < startingDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = "p-2";
+        calendarGrid.appendChild(emptyCell);
+      }
+
+      // Fill the calendar with days
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement('div');
+        cell.className = "p-2 border rounded calendar-cell";
+        cell.textContent = day;
+        // Optional: highlight today's date
+        const today = new Date();
+        if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+          cell.classList.add("bg-blue-100", "font-bold");
+        }
+        calendarGrid.appendChild(cell);
+      }
+    }
+
+    // Navigation
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar(currentDate);
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar(currentDate);
+    });
+
+    renderCalendar(currentDate);
+
+    // Update current time and date on the sidebar
+    function updateDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('currentDateTime').textContent = now.toLocaleDateString(undefined, options) + " " + now.toLocaleTimeString();
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000); // update every second
+
+    // Booking functionality (simple demo)
+    const bookingForm = document.getElementById('bookingForm');
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const date = document.getElementById('bookingDate').value;
+      const time = document.getElementById('bookingTime').value;
+      const note = document.getElementById('bookingNote').value;
+      const reminderList = document.getElementById('reminderList');
+
+      // Create a new list item with booking details
+      const li = document.createElement('li');
+      li.className = "p-2 bg-white border rounded shadow";
+      li.textContent = `Booking on ${date} at ${time}: ${note}`;
+      reminderList.appendChild(li);
+
+      // Reset the form
+      bookingForm.reset();
+    });
+
+    // Notifications fetching (dummy, adjust with your API endpoint)
+    function fetchNotifications() {
+      // Example: static notifications
+      const notifications = [
+        { message: "New booking confirmed for 2023-06-15." },
+        { message: "Reminder: Meeting at 3 PM today." }
+      ];
+      const container = document.getElementById('reminderList');
+      container.innerHTML = ''; // Clear previous notifications
+      notifications.forEach(notification => {
+        const notifItem = document.createElement('li');
+        notifItem.className = 'p-2 bg-white border rounded shadow text-gray-700';
+        notifItem.textContent = notification.message;
+        container.appendChild(notifItem);
+      });
+    }
+    // For demo purposes, fetch notifications on load and every 30 seconds
+    fetchNotifications();
+    setInterval(fetchNotifications, 30000);
+  </script>
+</body>
+</html>
