@@ -1,3 +1,4 @@
+import path from 'path';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -23,6 +24,10 @@ async function connectToDB () {
         console.log(error);
     }
 }
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
 
 app.listen(PORT, () => {
     connectToDB();
