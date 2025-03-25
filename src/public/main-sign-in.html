@@ -6,11 +6,12 @@
   <title>Sign In - Career Atlas</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
-  <link rel="icon" type="image/x-icon" sizes="180x180" href="./Career-Atlas-icon.ico">
+  <link rel="icon" type="image/x-icon" sizes="180x180" href="./assets/ico/Career-Atlas-icon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <!-- Loading Animation -->
+  <article class="p-5">
   <div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
     <div class="flex flex-row gap-2">
       <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
@@ -22,26 +23,24 @@
   <!-- Main Content; initially hidden until page load -->
   <div id="main-content" class="hidden flex h-screen bg-white">
     <!-- Left Section (Form) -->
-    <div class="w-1/2 flex items-center justify-center p-8">
+    <div class="w-1/2 flex items-center justify-center p-8 py-6 my-7">
       <div class="w-full max-w-md">
         <!-- Logo -->
         <div class="text-center mb-6">
-          <img src="./loogoo 1.png" alt="Career Atlas Logo" class="mx-auto w-32">
+          <img src="./assets/images/logo.png" alt="Career Atlas Logo" class="mx-auto w-32">
         </div>
-        
+
         <h2 class="text-2xl font-bold text-center text-black mb-2">Welcome back!</h2>
         <h3 class="text-xl font-semibold text-center text-gray-700 mb-4">Enter your Credentials to access your account</h3>
-        
+
         <!-- Sign-In Form (ID added for JavaScript targeting) -->
         <form id="signInForm">
           <label class="block text-gray-700 mb-1">Email or Username</label>
-          <input id="loginEmail" type="email" placeholder="Enter your email or username" 
-                 class="w-full p-2 border rounded mb-4 bg-white text-black border-gray-300 focus:border-green-500 placeholder-gray-500 text-sm">
-          
+          <input id="loginEmail" type="email" placeholder="Enter your email or username" class="w-full p-2 border rounded mb-4 bg-white text-black border-gray-300 focus:border-green-500 placeholder-gray-500 text-sm">
+
           <label class="block text-gray-700 mb-1">Password</label>
-          <input id="loginPassword" type="password" placeholder="Password" 
-                 class="w-full p-2 border rounded mb-2 bg-white text-black border-gray-300 focus:border-green-500 placeholder-gray-500 text-sm">
-          
+          <input id="loginPassword" type="password" placeholder="Password" class="w-full p-2 border rounded mb-2 bg-white text-black border-gray-300 focus:border-green-500 placeholder-gray-500 text-sm">
+
           <div class="flex justify-between items-center mb-4">
             <label class="flex items-center text-gray-600">
               <input class="accent-green hover:accent-blue-700" type="checkbox">
@@ -49,77 +48,77 @@
             </label>
             <a href="#" class="text-blue-600 text-sm hover:underline">Forgot password?</a>
           </div>
-          
+
           <button type="submit" class="w-full flex items-center justify-center px-4 py-2 bg-green-700 text-white font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-800">
             Login
           </button>
         </form>
-        
+
         <!-- User Type Selection -->
         <div class="mb-6">
           <span class="block text-gray-700 mb-2">I am a:</span>
           <div class="flex space-x-4">
             <label class="flex items-center">
-              <input type="radio" name="userType" value="jobseeker" class="mr-2" checked />Job Seeker
+              <input type="radio" name="userType" value="jobSeeker" class="mr-2" checked />Job Seeker
             </label>
             <label class="flex items-center">
               <input type="radio" name="userType" value="employer" class="mr-2" />Employer
             </label>
           </div>
         </div>
-        
+
         <!-- OR Divider -->
         <div class="flex items-center my-6">
           <div class="flex-1 h-px bg-gray-300"></div>
           <p class="px-3 text-gray-500 text-sm">or</p>
           <div class="flex-1 h-px bg-gray-300"></div>
         </div>
-        
+
         <!-- Social Login -->
         <div class="flex space-x-4">
           <!-- Google Button -->
           <button class="flex justify-center items-center w-1/2 border border-gray-300 p-2 rounded hover:bg-gray-200 transition">
-            <img src="./Google.png" alt="Google Logo" class="w-7 h-6">
+            <img src="./assets/images/Google.png" alt="Google Logo" class="w-7 h-6">
           </button>
           <!-- Apple Button -->
           <button class="flex justify-center items-center w-1/2 border border-gray-300 p-2 rounded hover:bg-gray-200 transition">
-            <img src="./Apple.Inc.png" alt="Apple Logo" class="w-7 h-8">
+            <img src="./assets/images/Apple.Inc.png" alt="Apple Logo" class="w-7 h-8">
           </button>
         </div>
-        
+
         <div class="flex items-center my-6">
           <div class="flex-1 h-px bg-gray-300"></div>
           <p class="px-3 text-gray-500 text-sm">or</p>
           <div class="flex-1 h-px bg-gray-300"></div>
         </div>
-        
+
         <!-- Sign Up Link -->
         <div>
           <p class="text-center text-md font-semibold">New Here?</p>
           <p class="text-center text-blue-600 mt-4 text-sm">
-            <a href="./Sign-Up.html" class="w-full flex items-center justify-center px-4 py-2 bg-green-700 text-white font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-800">
+            <a href="./sign-up.html" class="w-full flex items-center justify-center px-4 py-2 bg-green-700 text-white font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-green-800">
               Click here to Sign Up!
             </a>
           </p>
         </div>
       </div>
     </div>
-    
+
     <!-- Right Section (Image) -->
     <div class="w-1/2 hidden md:block">
-      <img src="./chris-lee-70l1tDAI6rM-unsplash 1.png" alt="Login Image" class="w-full h-full object-cover rounded-l-3xl">
+      <img src="./assets/images/chris-lee-70l1tDAI6rM-unsplash 1.png" alt="Login Image" class="w-full h-full object-cover rounded-l-3xl">
     </div>
   </div>
-  
+
   <!-- JavaScript for Handling Login -->
   <script>
     document.getElementById('signInForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
       const userType = document.querySelector('input[name="userType"]:checked').value;
-      
+
       // Send credentials to backend via POST request
       fetch('/api/login', {
         method: 'POST',
@@ -136,7 +135,7 @@
         // Assume the backend returns a JSON object with a username property
         localStorage.setItem('username', data.username);
         // Redirect to the appropriate dashboard
-        if (userType === 'jobseeker') {
+        if (userType === 'jobSeeker') {
           window.location.href = './Dashboard-Jobseeker.html';
         } else if (userType === 'employer') {
           window.location.href = './Dashboard-Employer.html';
@@ -158,5 +157,6 @@
       }, 2000); // Adjust the delay as needed
     });
   </script>
+  </article>
 </body>
 </html>
