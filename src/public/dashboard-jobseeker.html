@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/x-icon" sizes="180x180" href="./Career-Atlas-icon.ico">
+  <link rel="icon" type="image/x-icon" sizes="180x180" href="./assets/images/Career-Atlas-icon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     /* Optional: styling for dropdown toggle arrow animation */
@@ -14,6 +15,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Loading Animation -->
   <div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
@@ -33,52 +35,72 @@
           <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
               <div class="shrink-0">
-                <img class="w-15" src="./loogoo 1.png" alt="Your Company">
+                <img class="w-15" src="./assets/images/logo.png" alt="Your Company">
               </div>
               <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4">
                   <!-- Active tab uses darker text, others use gray -->
-                  <a href="./Main-Sign-in.html" class="rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-blue-600" aria-current="page">Home</a>
-                  <a href="./EZ-Apply-Now.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600">Find Job</a>
-                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600">One Push</a>
-                  <a href="./Calender.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600">Calendar</a>
+                  <a href="./Main-Sign-in.html"
+                    class="rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-blue-600"
+                    aria-current="page">Home</a>
+                  <a href="./EZ-Apply-Now.html"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600">Find
+                    Job</a>
+                  <a href="#"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600">One
+                    Push</a>
+                  <a href="./Calender.html"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 hover:text-blue-600">Calendar</a>
                 </div>
               </div>
             </div>
             <div class="hidden md:block relative">
               <div class="ml-4 flex items-center md:ml-6">
-                <button type="button" class="relative rounded-full bg-white p-1 text-gray-600 hover:text-blue-600 focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none">
+                <button type="button"
+                  class="relative rounded-full bg-white p-1 text-gray-600 hover:text-blue-600 focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none">
                   <span class="sr-only">View notifications</span>
-                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                   </svg>
                 </button>
                 <!-- Profile dropdown -->
                 <div class="relative ml-3">
                   <div>
-                    <button type="button" id="profileButton" class="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none">
+                    <button type="button" id="profileButton"
+                      class="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none">
                       <span class="sr-only">Open user menu</span>
-                      <img class="w-8 h-8 rounded-full" src="./User 02a.png" alt="Profile-Picture">
-                      <svg id="dropdownArrow" class="w-4 h-4 ml-2 text-gray-600 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <img class="w-8 h-8 rounded-full" src="./assets/images/User 02a.png" alt="Profile-Picture">
+                      <svg id="dropdownArrow" class="w-4 h-4 ml-2 text-gray-600 transition-transform duration-200"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                   </div>
                   <!-- Dropdown menu -->
-                  <div id="profileDropdown" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
-                    <a href="./Jobseeker-Profile.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem">Your Profile</a>
-                    <a href="./Error-404.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem">Settings</a>
-                    <a href="./Main-Sign-in.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem">Sign out</a>
+                  <div id="profileDropdown"
+                    class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+                    <a href="./Jobseeker-Profile.html" class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem">Your Profile</a>
+                    <a href="./Error-404.html" class="block px-4 py-2 text-sm text-gray-700"
+                      role="menuitem">Settings</a>
+                    <a href="./Main-Sign-in.html" class="block px-4 py-2 text-sm text-gray-700" role="menuitem">Sign
+                      out</a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="-mr-2 flex md:hidden">
               <!-- Mobile menu button -->
-              <button type="button" class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-600 hover:bg-gray-100 hover:text-blue-600 focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+              <button type="button"
+                class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-600 hover:bg-gray-100 hover:text-blue-600 focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
-                <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                <svg class="block w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
               </button>
             </div>
@@ -86,15 +108,22 @@
         </div>
         <div class="md:hidden" id="mobile-menu">
           <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-            <a href="./Home-Career Atlas.html" class="block rounded-md bg-blue-100 px-3 py-2 text-base font-medium text-blue-600" aria-current="page">Home</a>
-            <a href="./EZ-Apply-Now.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Find Job</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">One Push</a>
-            <a href="./Calender.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Calendar</a>
+            <a href="./Home-Career Atlas.html"
+              class="block rounded-md bg-blue-100 px-3 py-2 text-base font-medium text-blue-600"
+              aria-current="page">Home</a>
+            <a href="./EZ-Apply-Now.html"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Find
+              Job</a>
+            <a href="#"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">One
+              Push</a>
+            <a href="./Calender.html"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Calendar</a>
           </div>
           <div class="border-t border-blue-100 pt-4 pb-3">
             <div class="flex items-center px-5">
               <div class="shrink-0">
-                <img class="w-10 h-10 rounded-full" src="./User 02a.png"alt="Profile-Picture">
+                <img class="w-10 h-10 rounded-full" src="./assets/imagees/User 02a.png" alt="Profile-Picture">
               </div>
               <div class="ml-3">
                 <div id="user-name" class="text-base font-medium text-gray-900">Tom Cook</div>
@@ -102,20 +131,25 @@
               </div>
             </div>
             <div class="mt-3 space-y-1 px-2">
-              <a href="./Jobseeker-Profile.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Your Profile</a>
-              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Settings</a>
-              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Sign out</a>
+              <a href="./Jobseeker-Profile.html"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Your
+                Profile</a>
+              <a href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Settings</a>
+              <a href="#"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-blue-100 hover:text-blue-600">Sign
+                out</a>
             </div>
           </div>
         </div>
-  
+
         <!-- Page Header -->
         <header class="bg-white shadow-sm">
           <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">Welcome to your Dash!</h1>
           </div>
         </header>
-  
+
         <!-- Main Content -->
         <main class="ml-0 md:ml-20">
           <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -123,10 +157,12 @@
             <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               <!-- 1. Profile Card -->
               <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-                <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-500 bg-clip-border text-white shadow-lg shadow-blue-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
+                <div
+                  class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-500 bg-clip-border text-white shadow-lg shadow-blue-500/40 bg-gradient-to-r from-blue-500 to-blue-600">
                 </div>
                 <div class="p-6">
-                  <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                  <h5
+                    class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                     Kelvin Ankamah Adjei
                   </h5>
                   <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
@@ -134,37 +170,44 @@
                   </p>
                 </div>
                 <div class="p-6 pt-0">
-                  <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                  <button data-ripple-light="true" type="button"
+                    class="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     View Profile
                   </button>
                 </div>
               </div>
-  
+
               <!-- 2. Project Showcase Card -->
               <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-                <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-green-500 bg-clip-border text-white shadow-lg shadow-green-500/40 bg-gradient-to-r from-green-500 to-green-600">
+                <div
+                  class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-green-500 bg-clip-border text-white shadow-lg shadow-green-500/40 bg-gradient-to-r from-green-500 to-green-600">
                 </div>
                 <div class="p-6">
-                  <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                  <h5
+                    class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                     Mebanbo AI
                   </h5>
                   <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                    A Next.js-based AI project with a sleek Tailwind CSS interface. Transforming ideas into intelligent solutions.
+                    A Next.js-based AI project with a sleek Tailwind CSS interface. Transforming ideas into intelligent
+                    solutions.
                   </p>
                 </div>
                 <div class="p-6 pt-0">
-                  <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-green-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                  <button data-ripple-light="true" type="button"
+                    class="select-none rounded-lg bg-green-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     Learn More
                   </button>
                 </div>
               </div>
-  
+
               <!-- 3. Product/Service Promotion Card -->
               <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-                <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-purple-500 bg-clip-border text-white shadow-lg shadow-purple-500/40 bg-gradient-to-r from-purple-500 to-purple-600">
+                <div
+                  class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-purple-500 bg-clip-border text-white shadow-lg shadow-purple-500/40 bg-gradient-to-r from-purple-500 to-purple-600">
                 </div>
                 <div class="p-6">
-                  <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                  <h5
+                    class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                     AI-Powered Chatbot
                   </h5>
                   <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
@@ -172,18 +215,21 @@
                   </p>
                 </div>
                 <div class="p-6 pt-0">
-                  <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-purple-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-500/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                  <button data-ripple-light="true" type="button"
+                    class="select-none rounded-lg bg-purple-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-purple-500/20 transition-all hover:shadow-lg hover:shadow-purple-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     Try It Now
                   </button>
                 </div>
               </div>
-  
+
               <!-- 4. Event Invitation Card -->
               <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-                <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-red-500 bg-clip-border text-white shadow-lg shadow-red-500/40 bg-gradient-to-r from-red-500 to-red-600">
+                <div
+                  class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-red-500 bg-clip-border text-white shadow-lg shadow-red-500/40 bg-gradient-to-r from-red-500 to-red-600">
                 </div>
                 <div class="p-6">
-                  <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+                  <h5
+                    class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                     Tech Innovators Meetup
                   </h5>
                   <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
@@ -191,7 +237,8 @@
                   </p>
                 </div>
                 <div class="p-6 pt-0">
-                  <button data-ripple-light="true" type="button" class="select-none rounded-lg bg-red-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                  <button data-ripple-light="true" type="button"
+                    class="select-none rounded-lg bg-red-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     Register Now
                   </button>
                 </div>
@@ -199,69 +246,70 @@
             </div>
           </div>
         </main>
-      </div>
-  
-      <script>
-        // Update the displayed username from login data (stored in localStorage)
-        document.addEventListener("DOMContentLoaded", function() {
-          const userNameElement = document.getElementById("user-name");
-          const storedName = localStorage.getItem("username");
-          if (storedName && userNameElement) {
-            userNameElement.textContent = storedName;
-          }
-        });
-        
-        // Toggle profile dropdown on click
-        document.getElementById("profileButton")?.addEventListener("click", function() {
-          const dropdown = document.getElementById("profileDropdown");
-          if (dropdown) {
-            dropdown.classList.toggle("hidden");
-            // Optionally, rotate the arrow
-            document.getElementById("dropdownArrow")?.classList.toggle("rotate-180");
-          }
-        });
-        
-        // Function to fetch notifications from the backend
-        function fetchNotifications() {
-          fetch('/api/notifications')
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-              }
-              return response.json();
-            })
-            .then(data => {
-              const container = document.getElementById('notification-list');
-              if (container) {
-                container.innerHTML = ''; // Clear previous notifications
-                // Assuming data is an array of notification objects with a "message" property
-                data.forEach(notification => {
-                  const notifItem = document.createElement('div');
-                  notifItem.className = 'p-2 bg-white rounded shadow text-gray-700';
-                  notifItem.textContent = notification.message;
-                  container.appendChild(notifItem);
-                });
-              }
-            })
-            .catch(error => console.error('Error fetching notifications:', error));
+    </div>
+
+    <script>
+      // Update the displayed username from login data (stored in localStorage)
+      document.addEventListener("DOMContentLoaded", function () {
+        const userNameElement = document.getElementById("user-name");
+        const storedName = localStorage.getItem("username");
+        if (storedName && userNameElement) {
+          userNameElement.textContent = storedName;
         }
-        
-        // Fetch notifications when the page loads
-        fetchNotifications();
-        // Poll for new notifications every 30 seconds
-        setInterval(fetchNotifications, 30000);
-      </script>
-  
-      <!-- Simulated loading screen -->
-      <script>
-        window.addEventListener("load", function() {
-          setTimeout(() => {
-            document.getElementById("loading-screen").style.display = "none";
-            document.getElementById("main-content").classList.remove("hidden");
-          }, 2000); // Adjust the delay as needed
-        });
-      </script>
-  
+      });
+
+      // Toggle profile dropdown on click
+      document.getElementById("profileButton")?.addEventListener("click", function () {
+        const dropdown = document.getElementById("profileDropdown");
+        if (dropdown) {
+          dropdown.classList.toggle("hidden");
+          // Optionally, rotate the arrow
+          document.getElementById("dropdownArrow")?.classList.toggle("rotate-180");
+        }
+      });
+
+      // Function to fetch notifications from the backend
+      function fetchNotifications() {
+        fetch('/api/notifications')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+          })
+          .then(data => {
+            const container = document.getElementById('notification-list');
+            if (container) {
+              container.innerHTML = ''; // Clear previous notifications
+              // Assuming data is an array of notification objects with a "message" property
+              data.forEach(notification => {
+                const notifItem = document.createElement('div');
+                notifItem.className = 'p-2 bg-white rounded shadow text-gray-700';
+                notifItem.textContent = notification.message;
+                container.appendChild(notifItem);
+              });
+            }
+          })
+          .catch(error => console.error('Error fetching notifications:', error));
+      }
+
+      // Fetch notifications when the page loads
+      fetchNotifications();
+      // Poll for new notifications every 30 seconds
+      setInterval(fetchNotifications, 30000);
+    </script>
+
+    <!-- Simulated loading screen -->
+    <script>
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          document.getElementById("loading-screen").style.display = "none";
+          document.getElementById("main-content").classList.remove("hidden");
+        }, 2000); // Adjust the delay as needed
+      });
+    </script>
+
   </div>
 </body>
+
 </html>

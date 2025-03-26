@@ -1,93 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome to Career Atlas</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="icon" type="image/x-icon" sizes="180x180" href="./Career-Atlas-icon.ico">
 
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Career Atlas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" sizes="180x180" href="./assets/images/Career-Atlas-icon.ico">
 
-        <style>
-            @font-face {
-                font-family: 'Lato';
-                src: url('./fonts/Lato-Regular.ttf') format('truetype');
-                font-weight: normal;
-                font-style: normal;
+    <style>
+        @font-face {
+            font-family: 'Lato';
+            src: url('./fonts/Lato-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(0);
             }
 
-            body {
-                font-family: 'Lato', sans-serif;
-                scroll-behavior: smooth;
+            50% {
+                transform: translateY(100%);
             }
-            @keyframes bounce {
-                0%, 100% { transform: translateX(0); }
-                50% { transform: translateY(100%); }
-            }
-            .loading-bar {
-                width: 50px;
-                height: 5px;
-                background-color: blue;
-                animation: bounce 1.5s infinite ease-in-out;
-            }
-            .hero-image-container {
-                position: relative;
-                width: 100%;
-                max-width: 500px; /* Adjust size as needed */
+        }
+
+        .loading-bar {
+            width: 50px;
+            height: 5px;
+            background-color: blue;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            /* Adjust size as needed */
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
                 opacity: 0;
-                animation: fadeIn 2s forwards;
             }
 
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
+            to {
+                opacity: 1;
             }
-            
-            .hero-image-container img {
-                width: 100%;
-                height: auto;
-                position: absolute;
-                top: 40%; /* Adjust this value to move the image up */
-                left: 50%;
-                transform: translate(-50%, -50%);
-                opacity: 0.3; /* Image has been faded into the background */
-            }
-            /* Image fades into background and pops in 3D on hover */
-            .image-container {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+        }
 
-            .image-container img {
-                width: 100%;
-                max-width: 16rem;
-                height: auto;
-                opacity: 0.3;
-                transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            }
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 40%;
+            /* Adjust this value to move the image up */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+            /* Image has been faded into the background */
+        }
 
-           
-              
-        </style>
-    </head>
-    <body>
-        <!-- Loading Animation -->
-      <div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
-      <div class="flex flex-row gap-2">
-      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
-      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
-      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
-     </div>
-     </div> 
-     
-     <div id="main-content" class="bg-gray-50 font-lato ">
+        /* Image fades into background and pops in 3D on hover */
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 16rem;
+            height: auto;
+            opacity: 0.3;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Animation -->
+    <div id="loading-screen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
+        <div class="flex flex-row gap-2">
+            <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+            <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+            <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+        </div>
+    </div>
+
+    <div id="main-content" class="bg-gray-50 font-lato ">
         <!-- Navigation -->
         <nav class="flex justify-between items-center px-8 py-4 border-b relative">
             <!-- Left Links -->
@@ -98,7 +114,8 @@
             </div>
 
             <!-- Centered About Us -->
-            <a href="./About-Us.html" class="font-medium text-gray-600 absolute left-1/2 transform -translate-x-1/2">ABOUT US</a>
+            <a href="./About-Us.html"
+                class="font-medium text-gray-600 absolute left-1/2 transform -translate-x-1/2">ABOUT US</a>
 
             <!-- Right Links with Dropdown -->
             <div class="flex items-center space-x-6">
@@ -106,10 +123,11 @@
                     <button class="text-gray-600 flex items-center">
                         🇺🇸 ENGLISH
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-                    <div class="hidden group-hover:block absolute top-full right-0 bg-white shadow-lg rounded mt-1 py-2 w-40">
+                    <div
+                        class="hidden group-hover:block absolute top-full right-0 bg-white shadow-lg rounded mt-1 py-2 w-40">
                         <a href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
                             🇺🇸 English
                         </a>
@@ -126,9 +144,9 @@
         <!-- Top Header -->
         <div class="flex justify-between items-center px-8 py-4 border-b">
             <a href="./Home-Career Atlas.html">
-                <img src="loogoo 1.png" alt="Logo" height="120" width="120">
+                <img src="./assets/images/logo.png" alt="Logo" height="120" width="120">
             </a>
-            
+
             <!-- Search Bar -->
             <div class="flex-1 max-w-xl mx-8">
                 <div class="flex items-center border rounded-lg p-2">
@@ -140,15 +158,17 @@
             <div class="flex items-center space-x-4">
                 <a href="./Main-Sign-in.html" class="text-gray-600">Sign In</a>
                 <!-- Post a Job Button -->
-                <a href="./Post-a-Job.html" id="postJobLink" class="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-cyan-500 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:from-blue-400 hover:to-cyan-400">Post A Job</a>
-                
+                <a href="./Post-a-Job.html" id="postJobLink"
+                    class="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-cyan-500 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:from-blue-400 hover:to-cyan-400">Post
+                    A Job</a>
+
             </div>
-            
+
         </div>
 
         <!-- Hero Section -->
         <div class="max-w-6xl mx-auto mt-16 px-4 flex flex-col md:flex-row items-center">
-           
+
             <div class="md:w-1/2 text-center md:text-left">
                 <h1 class="text-3xl md:text-5xl font-normal mb-6">
                     Find a Job that suits<br class="hidden md:block">
@@ -158,8 +178,8 @@
                     We are here to help you secure your dream job. Get your CV prepared <br class="hidden md:block">
                     for the exciting moments and wins ahead.
                 </p>
-                
-                
+
+
                 <div class="flex flex-col md:flex-row gap-4 mb-12">
                     <div class="flex-1 flex items-center border rounded-lg p-2">
                         <i class="fa fa-search px-2"></i>
@@ -167,28 +187,32 @@
                     </div>
                     <div class="flex-1 flex items-center border rounded-lg p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                         </svg>
                         <input type="text" placeholder="Your location" class="flex-1 outline-none">
                     </div>
-                    <button class="flex items-center justify-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500">Find Job</button>
+                    <button
+                        class="flex items-center justify-center px-6 py-3 bg-blue-500 text-white font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500">Find
+                        Job</button>
                 </div>
             </div>
-            
+
             <!-- Right Side (Image) -->
             <div class="md:w-1/2 flex justify-center">
-                <img src="./—Pngtree—man working in front of_6671395 1 Background Removed.png" alt="Hero Image">
+                <img src="./assets/images/—Pngtree—man working in front of_6671395 1 Background Removed.png"
+                    alt="Hero Image">
             </div>
         </div>
-     <!-- Explore Section -->
-     <section id="explore-section" class="py-10 px-6 bg-gray-100 mt-10">
-        <h2 class="text-2xl font-bold text-center">Explore Opportunities</h2>
-        <p class="text-gray-600 text-center">Find exciting jobs that match your skills.</p>
-    </section>  
-    
-            
-            
-            <!-- Stats -->
+        <!-- Explore Section -->
+        <section id="explore-section" class="py-10 px-6 bg-gray-100 mt-10">
+            <h2 class="text-2xl font-bold text-center">Explore Opportunities</h2>
+            <p class="text-gray-600 text-center">Find exciting jobs that match your skills.</p>
+        </section>
+
+
+
+        <!-- Stats -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 mb-8" id="statsSection">
             <div class="stat-box bg-blue-50 p-6 rounded-lg border border-blue-100 hover:border-blue-200 transition-all">
                 <div class="flex flex-col items-center">
@@ -231,303 +255,359 @@
             </div>
         </div>
 
-        </div>
+    </div>
 
-        <!-- Explore Section -->
-        <section class="py-10 px-6">
-            <div class="flex justify-between items-center mb-6">
+    <!-- Explore Section -->
+    <section class="py-10 px-6">
+        <div class="flex justify-between items-center mb-6">
             <h1 class="text-4xl font-bold font-montserrat">Explore EZ APPLY</h1>
-            <button class="bg-transparent hover:bg-gray-100 text-blue-500 font-semibold py-2 px-4 rounded inline-flex items-center">
+            <button
+                class="bg-transparent hover:bg-gray-100 text-blue-500 font-semibold py-2 px-4 rounded inline-flex items-center">
                 View all
                 <svg class="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd" />
                 </svg>
             </button>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
 
             <!-- Category Cards -->
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="pen-tool 1.png" alt="Graphic Designs Icon" class="w-8 h-8">
+                    <img src="./assets/images/pen-tool 1.png" alt="Graphic Designs Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Graphic Designs</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="programming-language 1.png" alt="Code & Programming Icon" class="w-8 h-8">
+                    <img src="./assets/images/programming-language 1.png" alt="Code & Programming Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Code & Programming</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="megaphone 1.png" alt="Digital Marketing Icon" class="w-8 h-8">
+                    <img src="./assets/images/megaphone 1.png" alt="Digital Marketing Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Digital Marketing</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="tv-show 1.png" alt="Video & Animation Icon" class="w-8 h-8">
+                    <img src="./assets/images/tv-show 1.png" alt="Video & Animation Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Video & Animation</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="./Music.png" alt="Music & Audio Icon" class="w-8 h-8">
+                    <img src="./assets/images/Music.png" alt="Music & Audio Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Music & Audio</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="./money-bag 1.png" alt="Account & Finance Icon" class="w-8 h-8">
+                    <img src="./assets/images/money-bag 1.png" alt="Account & Finance Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Account & Finance</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="./first-aid-kit 1.png" alt="Health & Care Icon" class="w-8 h-8">
+                    <img src="./assets/images/first-aid-kit 1.png" alt="Health & Care Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Health & Care</p>
             </div>
             <div class="flex items-center p-2 rounded-lg shadow-sm">
                 <div class="bg-blue-50 p-2 rounded mr-2">
-                <img src="./data 1.png" alt="Data & Science Icon" class="w-8 h-8">
+                    <img src="./assets/images/data 1.png" alt="Data & Science Icon" class="w-8 h-8">
                 </div>
                 <p class="text-sm font-medium font-montserrat">Data & Science</p>
             </div>
-            </div>
-        </section>
-        
-        <!-- Find Job Section -->
-        <section class="py-6 px-6 bg-white shadow-md rounded-lg mt-8">
-            <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold font-montserrat">Find Job</h2>
-            <button class="bg-transparent hover:bg-gray-100 text-blue-500 font-semibold py-2 px-4 rounded inline-flex items-center">
-            View all
-            </button>
-            </div>
+        </div>
+    </section>
 
-            <!-- Job Listings -->
-            <div class="space-y-4">
+    <!-- Find Job Section -->
+    <section class="py-6 px-6 bg-white shadow-md rounded-lg mt-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold font-montserrat">Find Job</h2>
+            <button
+                class="bg-transparent hover:bg-gray-100 text-blue-500 font-semibold py-2 px-4 rounded inline-flex items-center">
+                View all
+            </button>
+        </div>
+
+        <!-- Job Listings -->
+        <div class="space-y-4">
 
             <!-- Job Card 1 -->
             <div class="flex items-center p-4 rounded-lg shadow-md">
-                <img src="ux-design 1.png" alt="Company Logo" class="w-10 h-10 mr-4">
+                <img src="./assets/images/ux-design 1.png" alt="Company Logo" class="w-10 h-10 mr-4">
                 <div class="flex-grow">
-                <h3 class="font-semibold text-md font-montserrat">Senior UI/UX Designer</h3>
-                <div class="flex items-center space-x-2">
-                    <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Online Base</span>
+                    <h3 class="font-semibold text-md font-montserrat">Senior UI/UX Designer</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Online Base</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        <p class="inline"><img src="./assets/images/placeholder 1.png" alt="Location"
+                                class="w-4 h-4 inline mr-1">CANADA</p>
+                        <p class="inline ml-2"><img src="./assets/images/dollar-symbol 1.png" alt="Salary"
+                                class="w-4 h-4 inline mr-1">$30k-$35k</p>
+                        <p class="inline ml-2"><img src="./assets/images/calendar 1.png" alt="Time"
+                                class="w-4 h-4 inline mr-1">4 Days Remaining</p>
+                    </div>
                 </div>
-                <div class="text-gray-600 text-sm">
-                    <p class="inline"><img src="placeholder 1.png" alt="Location" class="w-4 h-4 inline mr-1">CANADA</p>
-                    <p class="inline ml-2"><img src="dollar-symbol 1.png" alt="Salary" class="w-4 h-4 inline mr-1">$30k-$35k</p>
-                    <p class="inline ml-2"><img src="calendar 1.png" alt="Time" class="w-4 h-4 inline mr-1">4 Days Remaining</p>
-                </div>
-                </div>
-                <button class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                Apply Now <img src="right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
+                <button
+                    class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                    Apply Now <img src="./assets/images/right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
                 </button>
             </div>
 
             <!-- Job Card 2 -->
             <div class="flex items-center p-4 rounded-lg shadow-md">
-                <img src="vecteezy_facebook-png-icon_16716481 1.png" alt="Company Logo" class="w-10 h-10 mr-4">
+                <img src="./assets/images/vecteezy_facebook-png-icon_16716481 1.png" alt="Company Logo"
+                    class="w-10 h-10 mr-4">
                 <div class="flex-grow">
-                <h3 class="font-semibold text-md">Software Engineer</h3>
-                <div class="flex items-center space-x-2">
+                    <h3 class="font-semibold text-md">Software Engineer</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        <p class="inline"><img src="./assets/images/placeholder 1.png" alt="Location"
+                                class="w-4 h-4 inline mr-1">USA</p>
+                        <p class="inline ml-2"><img src="./assets/images/dollar-symbol 1.png" alt="Salary"
+                                class="w-4 h-4 inline mr-1">$30k-$35k</p>
+                        <p class="inline ml-2"><img src="./assets/images/calendar 1.png" alt="Time"
+                                class="w-4 h-4 inline mr-1">15 Days Remaining</p>
+                    </div>
+                </div>
+                <button
+                    class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                    Apply Now <img src="./assets/images/right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
+                </button>
+            </div>
+
+            <!-- Job Card 3 -->
+            <div class="flex items-center p-4 rounded-lg shadow-md">
+                <img src="./assets/images/Apple.Inc.png" alt="Company Logo" class="w-10 h-10 mr-4">
+                <div class="flex-grow">
+                    <h3 class="font-semibold text-md">Graphic Designer</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Part Time</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        <p class="inline"><img src="./assets/images/placeholder 1.png" alt="Location"
+                                class="w-4 h-4 inline mr-1">GHANA</p>
+                        <p class="inline ml-2"><img src="./assets/images/dollar-symbol 1.png" alt="Salary"
+                                class="w-4 h-4 inline mr-1">$45k-$50k</p>
+                        <p class="inline ml-2"><img src="./assets/images/calendar 1.png" alt="Time"
+                                class="w-4 h-4 inline mr-1">30 Days Remaining</p>
+                    </div>
+                </div>
+                <button
+                    class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                    Apply Now <img src="./assets/images/right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
+                </button>
+            </div>
+
+            <!-- Job Card 4 -->
+            <div class="flex items-center p-4 rounded-lg shadow-md">
+                <img src="./assets/images/vecteezy_figma-3d-icon_32050116 1.png" alt="Company Logo"
+                    class="w-10 h-10 mr-4">
+                <div class="flex-grow">
+                    <h3 class="font-semibold text-md">Product Designer</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        <p class="inline"><img src="./assets/images/placeholder 1.png" alt="Location"
+                                class="w-4 h-4 inline mr-1">UK</p>
+                        <p class="inline ml-2"><img src="./assets/images/dollar-symbol 1.png" alt="Salary"
+                                class="w-4 h-4 inline mr-1">$50k-$60k</p>
+                        <p class="inline ml-2"><img src="./assets/images/calendar 1.png" alt="Time"
+                                class="w-4 h-4 inline mr-1">1 Month Ago</p>
+                    </div>
+                </div>
+                <button
+                    class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                    Apply Now <img src="./assets/images/right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
+                </button>
+            </div>
+
+            <!-- Job Card 5 -->
+            <div class="flex items-center p-4 rounded-lg shadow-md">
+                <img src="./assets/images/Google.png" alt="Company Logo" class="w-7 mr-4">
+                <div class="flex-grow">
+                    <h3 class="font-semibold text-md">Marketing Officer</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        <p class="inline"><img src="./assets/images/placeholder 1.png" alt="Location"
+                                class="w-4 h-4 inline mr-1">CANADA</p>
+                        <p class="inline ml-2"><img src="./assets/images/dollar-symbol 1.png" alt="Salary"
+                                class="w-4 h-4 inline mr-1">$55k-$60k</p>
+                        <p class="inline ml-2"><img src="./assets/images/calendar 1.png" alt="Time"
+                                class="w-4 h-4 inline mr-1">3 Months Remaining</p>
+                    </div>
+                </div>
+
+                <button
+                    class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                    Apply Now <img src="./assets/images/right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
+                </button>
+            </div>
+
+            <!-- Job Card 6 -->
+            <div class="flex items-center p-4 rounded-lg shadow-md">
+                <img src="./assets/images/vecteezy_adobe-photoshop-logo-transparent-background_46437272 1.png"
+                    alt="Company Logo" class="w-10 h-10 mr-4">
+                <div class="flex-grow">
+                    <h3 class="font-semibold text-md">Relation Officer</h3>
                     <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
+                    <div class="flex items-center space-x-2">
+                    </div>
+                    <div class="text-gray-600 text-sm">
+                        <p class="inline"><img src="./assets/images/placeholder 1.png" alt="Location"
+                                class="w-4 h-4 inline mr-1">USA</p>
+                        <p class="inline ml-2"><img src="./assets/images/dollar-symbol 1.png" alt="Salary"
+                                class="w-4 h-4 inline mr-1">$55k-$60k</p>
+                        <p class="inline ml-2"><img src="./assets/images/calendar 1.png" alt="Time"
+                                class="w-4 h-4 inline mr-1">1 Month Remaining</p>
+                    </div>
                 </div>
-                <div class="text-gray-600 text-sm">
-                    <p class="inline"><img src="placeholder 1.png" alt="Location" class="w-4 h-4 inline mr-1">USA</p>
-                    <p class="inline ml-2"><img src="dollar-symbol 1.png" alt="Salary" class="w-4 h-4 inline mr-1">$30k-$35k</p>
-                    <p class="inline ml-2"><img src="calendar 1.png" alt="Time" class="w-4 h-4 inline mr-1">15 Days Remaining</p>
-                </div>
-                </div>
-                <button class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                Apply Now <img src="right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
+                <button
+                    class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                    Apply Now <img src="./assets/images/right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
                 </button>
             </div>
 
-                    <!-- Job Card 3 -->
-                    <div class="flex items-center p-4 rounded-lg shadow-md">
-                <img src="./Apple.Inc.png" alt="Company Logo" class="w-10 h-10 mr-4">
-                <div class="flex-grow">
-                <h3 class="font-semibold text-md">Graphic Designer</h3>
-                <div class="flex items-center space-x-2">
-                    <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Part Time</span>
-                </div>
-                <div class="text-gray-600 text-sm">
-                    <p class="inline"><img src="placeholder 1.png" alt="Location" class="w-4 h-4 inline mr-1">GHANA</p>
-                    <p class="inline ml-2"><img src="dollar-symbol 1.png" alt="Salary" class="w-4 h-4 inline mr-1">$45k-$50k</p>
-                    <p class="inline ml-2"><img src="calendar 1.png" alt="Time" class="w-4 h-4 inline mr-1">30 Days Remaining</p>
-                </div>
-                </div>
-                <button class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                Apply Now <img src="right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
-                </button>
-            </div>
-
-                        <!-- Job Card 4 -->
-                        <div class="flex items-center p-4 rounded-lg shadow-md">
-                <img src="vecteezy_figma-3d-icon_32050116 1.png" alt="Company Logo" class="w-10 h-10 mr-4">
-                <div class="flex-grow">
-                <h3 class="font-semibold text-md">Product Designer</h3>
-                <div class="flex items-center space-x-2">
-                    <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
-                </div>
-                <div class="text-gray-600 text-sm">
-                    <p class="inline"><img src="placeholder 1.png" alt="Location" class="w-4 h-4 inline mr-1">UK</p>
-                    <p class="inline ml-2"><img src="dollar-symbol 1.png" alt="Salary" class="w-4 h-4 inline mr-1">$50k-$60k</p>
-                    <p class="inline ml-2"><img src="calendar 1.png" alt="Time" class="w-4 h-4 inline mr-1">1 Month Ago</p>
-                </div>
-                </div>
-                <button class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                Apply Now <img src="right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
-                </button>
-            </div>
-
-                                <!-- Job Card 5 -->
-                                <div class="flex items-center p-4 rounded-lg shadow-md">
-                <img src="./Google.png" alt="Company Logo" class="w-7 mr-4">
-                <div class="flex-grow">
-                <h3 class="font-semibold text-md">Marketing Officer</h3>
-                <div class="flex items-center space-x-2">
-                    <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
-                </div>
-                <div class="text-gray-600 text-sm">
-                    <p class="inline"><img src="placeholder 1.png" alt="Location" class="w-4 h-4 inline mr-1">CANADA</p>
-                    <p class="inline ml-2"><img src="dollar-symbol 1.png" alt="Salary" class="w-4 h-4 inline mr-1">$55k-$60k</p>
-                    <p class="inline ml-2"><img src="calendar 1.png" alt="Time" class="w-4 h-4 inline mr-1">3 Months Remaining</p>
-                </div>
-                </div>
-                
-                <button class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                Apply Now <img src="right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
-                </button>
-            </div>
-
-                                    <!-- Job Card 6 -->
-                                    <div class="flex items-center p-4 rounded-lg shadow-md">
-                <img src="vecteezy_adobe-photoshop-logo-transparent-background_46437272 1.png" alt="Company Logo" class="w-10 h-10 mr-4">
-                <div class="flex-grow">
-                <h3 class="font-semibold text-md">Relation Officer</h3>
-                <span class="bg-blue-50 text-blue-500 text-xs py-1 px-2 rounded-full">Full Time</span>
-                <div class="flex items-center space-x-2">
-                </div>
-                <div class="text-gray-600 text-sm">
-                    <p class="inline"><img src="placeholder 1.png" alt="Location" class="w-4 h-4 inline mr-1">USA</p>
-                    <p class="inline ml-2"><img src="dollar-symbol 1.png" alt="Salary" class="w-4 h-4 inline mr-1">$55k-$60k</p>
-                    <p class="inline ml-2"><img src="calendar 1.png" alt="Time" class="w-4 h-4 inline mr-1">1 Month Remaining</p>
-                </div>
-                </div>
-                <button class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                Apply Now <img src="right (1) 1.png" alt="Arrow" class="w-4 h-4 ml-2">
-                </button>
-            </div>
-
-            </div>
-        </section>
-        <section class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
-            <div class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-blue-100),white)] opacity-20"></div>
-            <div class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white ring-1 shadow-xl shadow-blue-600/10 ring-blue-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
-            <div class="mx-auto max-w-2xl lg:max-w-4xl">
-              <img class="mx-auto h-12" src="https://tailwindcss.com/plus-assets/img/logos/workcation-logo-indigo-600.svg" alt="">
-              <figure class="mt-10">
+        </div>
+    </section>
+    <section class="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div
+            class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-blue-100),white)] opacity-20">
+        </div>
+        <div
+            class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white ring-1 shadow-xl shadow-blue-600/10 ring-blue-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center">
+        </div>
+        <div class="mx-auto max-w-2xl lg:max-w-4xl">
+            <img class="mx-auto h-12" src="https://tailwindcss.com/plus-assets/img/logos/workcation-logo-indigo-600.svg"
+                alt="">
+            <figure class="mt-10">
                 <blockquote class="text-center text-xl/8 font-black text-gray-900 sm:text-2xl/9">
-                  <p>“Career Atlas has truly transformed our recruitment process. Their innovative platform and exceptional support made it effortless to find the right talent. Our hiring efficiency has improved dramatically, and the quality of candidates has exceeded our expectations. I couldn't be more impressed with the level of professionalism and dedication they bring to every project!”</p>
+                    <p>“Career Atlas has truly transformed our recruitment process. Their innovative platform and
+                        exceptional support made it effortless to find the right talent. Our hiring efficiency has
+                        improved dramatically, and the quality of candidates has exceeded our expectations. I couldn't
+                        be more impressed with the level of professionalism and dedication they bring to every project!”
+                    </p>
                 </blockquote>
                 <figcaption class="mt-10">
-                  <img class="mx-auto size-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                  <div class="mt-4 flex items-center justify-center space-x-3 text-base">
-                    <div class="font-semibold text-gray-900">Linda Banning</div>
-                    <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
-                      <circle cx="1" cy="1" r="1" />
-                    </svg>
-                    <div class="text-gray-600">CEO of Work & Wahala</div>
-                  </div>
+                    <img class="mx-auto size-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="">
+                    <div class="mt-4 flex items-center justify-center space-x-3 text-base">
+                        <div class="font-semibold text-gray-900">Linda Banning</div>
+                        <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
+                            <circle cx="1" cy="1" r="1" />
+                        </svg>
+                        <div class="text-gray-600">CEO of Work & Wahala</div>
+                    </div>
                 </figcaption>
-              </figure>
-            </div>
-          </section>
-          
+            </figure>
+        </div>
+    </section>
 
-        <section class="py-10 px-6 bg-gray-100">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-center text-3xl font-semibold mb-8">Join our 30,000 happy customers</h2>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                
-                <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
-                    <p class="text-gray-700 text-lg font-normal">
-                        Let us do the work, so that you focus on what matters.
-                    </p>
-                    <p class="text-gray-700 text-sm font-normal mt-2">
-                        You are only a C.V away for your dream job
-                    </p>
-                    <div class="mt-4">
-                        <a href="#" class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Image Container (Center) -->
-                <div class="perspective-midrange md:perspective-dramatic w-full md:w-1/3 flex justify-center">
-                    <img id="dynamicImage" src="./C11 1 Background Removed.png" alt="Happy Man" class="w-full max-w-xs h-auto rounded-lg shadow-lg">
-                </div>
-                
-                <!-- Fixed Tabs (Far Right) -->
-                <div class="hidden md:flex flex-col gap-6 w-full md:w-1/3">
-                   
-                    <div class="bg-purple-700 text-white p-4 rounded-lg shadow-lg flex items-center gap-4">
-                        <i class="fas fa-search text-2xl"></i>
-                        <div>
-                            <h3 class="text-lg font-bold">Explore Opportunities</h3>
-                            <p class="text-sm">Browse job listings tailored to your expertise.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-orange-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-4">
-                        <i class="fas fa-user-circle text-2xl"></i>
-                        <div>
-                            <h3 class="text-lg font-bold">Create Your Profile</h3>
-                            <p class="text-sm">Highlight your skills and qualifications.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-blue-600 text-white p-4 rounded-lg shadow-lg flex items-center gap-4">
-                        <i class="fas fa-check-circle text-2xl"></i>
-                        <div>
-                            <h3 class="text-lg font-bold">Apply with Ease</h3>
-                            <p class="text-sm">Apply for jobs with just a few clicks.</p>
-                        </div>
-                    </div>
+
+    <section class="py-10 px-6 bg-gray-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-center text-3xl font-semibold mb-8">Join our 30,000 happy customers</h2>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
+                <p class="text-gray-700 text-lg font-normal">
+                    Let us do the work, so that you focus on what matters.
+                </p>
+                <p class="text-gray-700 text-sm font-normal mt-2">
+                    You are only a C.V away for your dream job
+                </p>
+                <div class="mt-4">
+                    <a href="#"
+                        class="flex items-center px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-full transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-100">
+                        Learn More
+                    </a>
                 </div>
             </div>
-        </section>
-        <section class="py-10 px-6 bg-gray-100">
-            <div class="bg-white py-24 sm:py-32">
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                  <h2 class="text-center text-lg/8 font-semibold text-gray-900">Trusted by the world's most innovative Start-up teams</h2>
-                  <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="158" height="48">
-                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform" width="158" height="48">
-                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple" width="158" height="48">
-                    <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal" width="158" height="48">
-                    <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic" width="158" height="48">
-                  </div>
+
+            <!-- Image Container (Center) -->
+            <div class="perspective-midrange md:perspective-dramatic w-full md:w-1/3 flex justify-center">
+                <img id="dynamicImage" src="./assets/images/C11 1 Background Removed.png" alt="Happy Man"
+                    class="w-full max-w-xs h-auto rounded-lg shadow-lg">
+            </div>
+
+            <!-- Fixed Tabs (Far Right) -->
+            <div class="hidden md:flex flex-col gap-6 w-full md:w-1/3">
+
+                <div class="bg-purple-700 text-white p-4 rounded-lg shadow-lg flex items-center gap-4">
+                    <i class="fas fa-search text-2xl"></i>
+                    <div>
+                        <h3 class="text-lg font-bold">Explore Opportunities</h3>
+                        <p class="text-sm">Browse job listings tailored to your expertise.</p>
+                    </div>
                 </div>
-              </div>
-              
-        </section>
-        
-        <section class="py-10 px-6 bg-white-100">
+
+                <div class="bg-orange-500 text-white p-4 rounded-lg shadow-lg flex items-center gap-4">
+                    <i class="fas fa-user-circle text-2xl"></i>
+                    <div>
+                        <h3 class="text-lg font-bold">Create Your Profile</h3>
+                        <p class="text-sm">Highlight your skills and qualifications.</p>
+                    </div>
+                </div>
+
+                <div class="bg-blue-600 text-white p-4 rounded-lg shadow-lg flex items-center gap-4">
+                    <i class="fas fa-check-circle text-2xl"></i>
+                    <div>
+                        <h3 class="text-lg font-bold">Apply with Ease</h3>
+                        <p class="text-sm">Apply for jobs with just a few clicks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-10 px-6 bg-gray-100">
+        <div class="bg-white py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <h2 class="text-center text-lg/8 font-semibold text-gray-900">Trusted by the world's most innovative
+                    Start-up teams</h2>
+                <div
+                    class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-gray-900.svg"
+                        alt="Transistor" width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform"
+                        width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple"
+                        width="158" height="48">
+                    <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-gray-900.svg"
+                        alt="SavvyCal" width="158" height="48">
+                    <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-gray-900.svg"
+                        alt="Statamic" width="158" height="48">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="py-10 px-6 bg-white-100">
         <!-- Company Boxes -->
         <div class="flex flex-wrap gap-8 mt-24 justify-center">
             <div class="bg-blue-600 rounded-lg p-6 w-64">
                 <div class="mb-4">
-                    <img src="./reviews 1.png" alt="Reviews" class="w-12 h-12 object-contain">
+                    <img src="./assets/images/reviews 1.png" alt="Reviews" class="w-12 h-12 object-contain">
                 </div>
                 <div>
                     <h3 class="text-white font-bold text-xl">AMAZON</h3>
@@ -537,7 +617,7 @@
 
             <div class="bg-blue-600 rounded-lg p-6 w-64">
                 <div class="mb-4">
-                    <img src="./reviews 1.png" alt="Reviews" class="w-12 h-12 object-contain">
+                    <img src="./assets/images/reviews 1.png" alt="Reviews" class="w-12 h-12 object-contain">
                 </div>
                 <div>
                     <h3 class="text-white font-bold text-xl">GOOGLE</h3>
@@ -547,7 +627,7 @@
 
             <div class="bg-blue-600 rounded-lg p-6 w-64">
                 <div class="mb-4">
-                    <img src="./reviews 1.png" alt="Reviews" class="w-12 h-12 object-contain">
+                    <img src="./assets/images/reviews 1.png" alt="Reviews" class="w-12 h-12 object-contain">
                 </div>
                 <div>
                     <h3 class="text-white font-bold text-xl">FACEBOOK</h3>
@@ -555,155 +635,159 @@
                 </div>
             </div>
         </div>
-        
-            <!-- Subscribe Box -->
-            <div class="flex justify-center mt-10">
-                <div class="bg-blue-600 rounded-lg p-6 w-96 flex flex-col items-center gap-4">
-                    <!-- Caption for subscription box -->
-                    <label class="text-white text-lg w-full mb-2 font-bold">NEW THINGS WILL UPDATE REGULARLY</label>
-                    <div class="flex w-full gap-2">
-                        <input id="subscribeEmail" type="email" placeholder="Enter your email" class="flex-1 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-sm placeholder:text-blue-500">
-                        <button id="subscribeBtn" class="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-cyan-500 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:from-blue-400 hover:to-cyan-400">Subscribe</button>
-                    </div>
-                    
-                    <!-- Message displayed after subscribing --> 
-                    <p id="subscribeMessage" class="text-white text-sm hidden">Thank You for subscribing!</p>
-                </div>
-            </div>
-        
-            <script>
-                document.getElementById('subscribeBtn').addEventListener('click', function() {
-                    var email = document.getElementById('subscribeEmail').value;
-                    if (email) {
-                        document.getElementById('subscribeMessage').classList.remove('hidden');
-                    }
-                });
-            </script>
-        </section>
 
-        <section class="py-10 px-6 bg-black text-white">
-            <div class="max-w-6xl mx-auto text-center">
-                <!-- Logo and Contact -->
-                <div class="mb-6">
-                    <img src="./Career-Atlas-Logo-white.png" alt="Career Atlas Logo" class="mx-auto w-50 mb-2">
-                    <h2 class="text-lg font-bold">Call Now: +233 000 000 000</h2>
-                    <p class="text-gray-400 text-sm">
-                        Discover tailored opportunities for job seekers and top talent for employers
-                    </p>
+        <!-- Subscribe Box -->
+        <div class="flex justify-center mt-10">
+            <div class="bg-blue-600 rounded-lg p-6 w-96 flex flex-col items-center gap-4">
+                <!-- Caption for subscription box -->
+                <label class="text-white text-lg w-full mb-2 font-bold">NEW THINGS WILL UPDATE REGULARLY</label>
+                <div class="flex w-full gap-2">
+                    <input id="subscribeEmail" type="email" placeholder="Enter your email"
+                        class="flex-1 p-2 rounded border border-gray-300 focus:outline-none focus:border-blue-500 text-sm placeholder:text-blue-500">
+                    <button id="subscribeBtn"
+                        class="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg shadow-cyan-500 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:from-blue-400 hover:to-cyan-400">Subscribe</button>
                 </div>
-        
-                <!-- Footer Navigation -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-8">
-                    <!-- Company Section -->
-                    <div>
-                        <h3 class="text-lg font-semibold">Company</h3>
-                        <ul class="text-gray-400 text-sm mt-2 space-y-1">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    </div>
-        
-                    <!-- Candidate Section -->
-                    <div>
-                        <h3 class="text-lg font-semibold">Candidate</h3>
-                        <ul class="text-gray-400 text-sm mt-2 space-y-1">
-                            <li><a href="#">Browse Jobs</a></li>
-                            <li><a href="#">Browse Candidates</a></li>
-                            <li><a href="#">Candidate Dashboard</a></li>
-                            <li><a href="#">Saved Jobs</a></li>
-                            <li><a href="#">Refund Policy</a></li>
-                        </ul>
-                    </div>
-        
-                    <!-- Employer Section -->
-                    <div>
-                        <h3 class="text-lg font-semibold">Employer</h3>
-                        <ul class="text-gray-400 text-sm mt-2 space-y-1">
-                            <li><a href="#">Post a Job</a></li>
-                            <li><a href="#">Browse Companies</a></li>
-                            <li><a href="#">Companies Dashboard</a></li>
-                            <li><a href="#">Applications</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-        
-                <!-- Support Section -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold">Support</h3>
+
+                <!-- Message displayed after subscribing -->
+                <p id="subscribeMessage" class="text-white text-sm hidden">Thank You for subscribing!</p>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('subscribeBtn').addEventListener('click', function () {
+                var email = document.getElementById('subscribeEmail').value;
+                if (email) {
+                    document.getElementById('subscribeMessage').classList.remove('hidden');
+                }
+            });
+        </script>
+    </section>
+
+    <section class="py-10 px-6 bg-black text-white">
+        <div class="max-w-6xl mx-auto text-center">
+            <!-- Logo and Contact -->
+            <div class="mb-6">
+                <img src="./assets/images/Career-Atlas-Logo-white.png" alt="Career Atlas Logo"
+                    class="mx-auto w-50 mb-2">
+                <h2 class="text-lg font-bold">Call Now: +233 000 000 000</h2>
+                <p class="text-gray-400 text-sm">
+                    Discover tailored opportunities for job seekers and top talent for employers
+                </p>
+            </div>
+
+            <!-- Footer Navigation -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-8">
+                <!-- Company Section -->
+                <div>
+                    <h3 class="text-lg font-semibold">Company</h3>
                     <ul class="text-gray-400 text-sm mt-2 space-y-1">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy & Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Candidate Section -->
+                <div>
+                    <h3 class="text-lg font-semibold">Candidate</h3>
+                    <ul class="text-gray-400 text-sm mt-2 space-y-1">
+                        <li><a href="#">Browse Jobs</a></li>
+                        <li><a href="#">Browse Candidates</a></li>
+                        <li><a href="#">Candidate Dashboard</a></li>
+                        <li><a href="#">Saved Jobs</a></li>
                         <li><a href="#">Refund Policy</a></li>
                     </ul>
                 </div>
-        
-                <!-- Footer Copyright -->
-                <div class="mt-10 border-t border-gray-700 pt-4 text-sm text-gray-500 text-center">
-                    © CareerAtlas 2025 | All Rights Reserved
+
+                <!-- Employer Section -->
+                <div>
+                    <h3 class="text-lg font-semibold">Employer</h3>
+                    <ul class="text-gray-400 text-sm mt-2 space-y-1">
+                        <li><a href="#">Post a Job</a></li>
+                        <li><a href="#">Browse Companies</a></li>
+                        <li><a href="#">Companies Dashboard</a></li>
+                        <li><a href="#">Applications</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
-        
-        
-        <script>
-            function animateCounters() {
-                const counters = document.querySelectorAll(".counter");
-                const statsSection = document.getElementById("statsSection");
-                let isAnimated = false;
-        
-                function runCounter(counter) {
-                    const target = +counter.getAttribute("data-target");
-                    let count = 0;
-                    const increment = target / 50; // Adjust speed
-        
-                    function updateCounter() {
-                        count += increment;
-                        if (count < target) {
-                            counter.textContent = Math.floor(count);
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target; // Set final value
-                        }
-                    }
-        
-                    updateCounter();
-                }
-        
-                function checkScroll() {
-                    const sectionTop = statsSection.getBoundingClientRect().top;
-                    if (sectionTop < window.innerHeight - 50 && !isAnimated) {
-                        counters.forEach(counter => runCounter(counter));
-                        isAnimated = true;
-                    }
-                }
-        
-                window.addEventListener("scroll", checkScroll);
-            }
-        
-            document.addEventListener("DOMContentLoaded", animateCounters);
-        </script>
-        <script>
-            document.querySelector('.explore-link').addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('#explore-section').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        </script> 
-       <script>
-        window.addEventListener("load", function() {
-        setTimeout(() => {
-        document.getElementById("loading-screen").style.display = "none";
-        }, 2000); // Adjust the delay as needed
-        });
-        </script>
-        
 
-     </div>
-    </body>
+            <!-- Support Section -->
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold">Support</h3>
+                <ul class="text-gray-400 text-sm mt-2 space-y-1">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy & Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Copyright -->
+            <div class="mt-10 border-t border-gray-700 pt-4 text-sm text-gray-500 text-center">
+                © CareerAtlas 2025 | All Rights Reserved
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        function animateCounters() {
+            const counters = document.querySelectorAll(".counter");
+            const statsSection = document.getElementById("statsSection");
+            let isAnimated = false;
+
+            function runCounter(counter) {
+                const target = +counter.getAttribute("data-target");
+                let count = 0;
+                const increment = target / 50; // Adjust speed
+
+                function updateCounter() {
+                    count += increment;
+                    if (count < target) {
+                        counter.textContent = Math.floor(count);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target; // Set final value
+                    }
+                }
+
+                updateCounter();
+            }
+
+            function checkScroll() {
+                const sectionTop = statsSection.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 50 && !isAnimated) {
+                    counters.forEach(counter => runCounter(counter));
+                    isAnimated = true;
+                }
+            }
+
+            window.addEventListener("scroll", checkScroll);
+        }
+
+        document.addEventListener("DOMContentLoaded", animateCounters);
+    </script>
+    <script>
+        document.querySelector('.explore-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector('#explore-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(() => {
+                document.getElementById("loading-screen").style.display = "none";
+            }, 2000); // Adjust the delay as needed
+        });
+    </script>
+
+
+    </div>
+</body>
+
 </html>
