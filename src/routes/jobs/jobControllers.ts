@@ -27,7 +27,6 @@ export async function createJob(req: Request, res: Response) {
 
         const newJob = new jobModel({
             pay: data.pay,
-            empId: data.empId,
             benefits: benefits,
             jobImage: result?.url,
             jobName: data.jobName,

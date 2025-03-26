@@ -26,7 +26,7 @@ const jobSchema = new mongoose.Schema({
     empId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Employers',
-        required: true,
+        // required: true,
     },
     timePosted: {
         type: Date,

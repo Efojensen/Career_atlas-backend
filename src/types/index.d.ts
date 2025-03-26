@@ -30,9 +30,9 @@ declare global {
                 jobImage?: string;
                 jobCategory: string;
                 jobDescription: string;
-                jobLocations?: string | [string];
                 empId?: string | JwtPayload;
                 benefits?: string | [string];
+                jobLocations?: string | [string];
             }
         }
     }
