@@ -33,6 +33,9 @@ const seekerSchema = new mongoose.Schema({
     resume: {
         type: String,
     },
+    skills: {
+        type: [String],
+    }
 });
 
 const seekerModel = mongoose.model('JobSeeker', seekerSchema);

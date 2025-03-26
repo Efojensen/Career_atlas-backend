@@ -115,13 +115,13 @@
         </form>
       </div>
     </div>
-    
+
     <!-- Right Section (Image) -->
     <div class="md:w-1/2 hidden md:block">
       <img src="./assets/images/chris-lee-70l1tDAI6rM-unsplash 1.png" alt="Login Image" class="w-full h-full object-cover rounded-l-3xl">
     </div>
   </div>
-  
+
   <script>
     window.addEventListener("load", function() {
       setTimeout(() => {
@@ -131,7 +131,7 @@
     });
 
     // Profile Picture Preview
-    document.getElementById('profilePicUpload').addEventListener('change', function(event) {
+    document.getElementById('profilePicUpload').addEventListener('change', async function(event) {
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
@@ -141,6 +141,56 @@
         reader.readAsDataURL(file);
       }
     });
+
+    document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+        // Create FormData object to handle file uploads and form data
+        const formData = new FormData();
+
+        // Append all form fields
+        const isStudent = document.querySelector('input[name="student"]:checked').value;
+        formData.append('username', document.getElementById('username').value);
+        formData.append('email', document.getElementById('email').value);
+        formData.append('password', document.getElementById('password').value);
+        formData.append('jobType', document.getElementById('jobType').value);
+        formData.append('student', isStudent);
+        formData.append('skills', document.getElementById('skills').value);
+        formData.append('experience', document.getElementById('experience').value);
+
+        // Append files if they exist
+        const profilePic = document.getElementById('profilePicUpload').files[0];
+        if (profilePic) {
+          formData.append('profilePic', profilePic);
+        }
+
+        try {
+          const response = await fetch(`http://localhost:3000/user/register`, {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = response.json()
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Sign Up failed')
+          }
+
+          // Store user data
+          localStorage.setItem('username', data.username);
+          localStorage.setItem('profilePic', data.profilePic);
+
+           // Redirect based on user type
+          if (userType === 'jobSeeker') {
+            window.location.href = './dashboard-jobseeker.html';
+          } else if (userType === 'employer') {
+            window.location.href = './dashboard-employer.html';
+          }
+        } catch (error) {
+          console.error('Login error:', error);
+          alert(`Sign up failed: ${error.message}`);
+        }
+    })
   </script>
 </body>
 </html>

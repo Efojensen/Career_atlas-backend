@@ -10,6 +10,10 @@ declare global {
                 userName: string;
                 password: string;
                 student: boolean;
+                profilePic?: string;
+                preferredJobType?: string;
+                skills?: string | [string];
+                yearsOfExperience?: string;
             },
             empCredentials: {
                 email: string;

@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
 import seekerModel from '../../db/seekerSchema';
+import cloudinary from '../../utils/cloudinary';
 import { OAuth2Client } from 'google-auth-library';
 
 export async function getAllUsers(req: Request, res: Response) {
@@ -15,13 +16,34 @@ export async function getAllUsers(req: Request, res: Response) {
 export async function signUp(req: Request, res: Response) {
     let data = req.usrCredentials
     try {
-        data.password = await bcrypt.hash(data.password, 10)
+        data.password = await bcrypt.hash(data.password, 10);
+
+        if (!data) {
+            res.status(500).json({ msg: "Data is empty" })
+            return;
+        }
+
+        if (!req.file) {
+            res.status(400).json({ msg: 'No profile picture uploaded'});
+            return;
+        }
+
+        const result = await cloudinary.uploader.upload(req.file.path)
+
+        let skills;
+        if (data.skills !== null && typeof data.skills === 'string') {
+            skills = data.skills.split(',')
+        }
 
         const newUser = new seekerModel({
+            skills: skills,
             email: data.email,
             student: data.student,
             password: data.password,
             userName: data.userName,
+            profile_pic: result.url,
+            preferredJobType: data.preferredJobType,
+            yearsOfExperience: data.yearsOfExperience,
         });
 
         const user = await newUser.save()
