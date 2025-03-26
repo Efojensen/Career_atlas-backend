@@ -495,28 +495,27 @@
         });
       });
 
-      form.addEventListener("submit", function (event) {
+      form.addEventListener("submit", async function (event) {
         event.preventDefault(); // Prevent default submission
 
         let isValid = true;
         let errorMessage = "";
 
-        // Validate required fields
-        const jobTitle = document.getElementById("job-title").value.trim();
+        const jobName = document.getElementById("job-title").value.trim();
         const companyName = document.getElementById("company-name").value.trim();
         const country = document.getElementById("country-input").value.trim();
         const location = document.getElementById("location").value.trim();
         const jobDescription = document.getElementById("job-description").value.trim();
         const selectedMethod = document.querySelector('input[name="apply-method"]:checked');
         const minSalary = document.getElementById("min-salary").value;
-        const maxSalary = document.getElementById("max-salary").value;
+        const pay = document.getElementById("max-salary").value;
 
-        if (!jobTitle || !companyName || !country || !location || !jobDescription || !selectedMethod) {
+        if (!jobTitle || !country || !location || !jobDescription || !selectedMethod) {
           errorMessage = "Please fill out all required fields.";
           isValid = false;
         }
 
-        // Validate salary range
+         // Validate salary range
         if (minSalary && maxSalary && Number(minSalary) > Number(maxSalary)) {
           errorMessage = "Minimum salary cannot be greater than maximum salary.";
           isValid = false;
@@ -534,9 +533,26 @@
           return;
         }
 
+        try {
+          const response = await fetch(`http://localhost:3000/job/post`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ jobName, companyName, country, location, jobDescription, pay })
+          })
+
+          const data = await response.json();
+
+          if (response.status !== 201) {
+            throw new Error(data.message || 'Job creation failed')
+          }
+
+          alert("Job posted successfully!");
+          window.location.href = "Employer.html"; // Redirect to success page
+        } catch (error) {
+          console.error(`Job create error: ${error}`)
+          alert(`Job create action failed`)
+        }
         // Simulate form submission
-        alert("Job posted successfully!");
-        window.location.href = "Employer.html"; // Redirect to success page
       });
     });
   </script>

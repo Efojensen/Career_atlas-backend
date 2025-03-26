@@ -11,17 +11,15 @@ export async function createJob(req: Request, res: Response) {
             return;
         }
 
-        if (!req.file) {
-            res.status(400).json({ msg: 'No job picture uploaded'});
-            return;
+        let result;
+        if (req.file) {
+            result = await cloudinary.uploader.upload(req.file.path);
         }
 
         let benefits, locations;
         if (data.benefits !== null && typeof data.benefits === 'string') {
             benefits = data.benefits.split(',')
         }
-
-        const result = await cloudinary.uploader.upload(req.file.path)
 
         if (data.jobLocations !== null && typeof data.jobLocations === 'string') {
             locations = data.jobLocations.split(',')
@@ -31,7 +29,7 @@ export async function createJob(req: Request, res: Response) {
             pay: data.pay,
             empId: data.empId,
             benefits: benefits,
-            jobImage: result.url,
+            jobImage: result?.url,
             jobName: data.jobName,
             jobType: data.jobType,
             jobLocations: locations,
