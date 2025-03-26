@@ -21,7 +21,8 @@
   </div>
 
   <!-- Main Content; initially hidden until page load -->
-  <div id="main-content" class="hidden flex h-screen bg-white">
+  <div id="main-content" class="flex h-screen bg-white">
+    <!-- !!Made change -->
     <!-- Left Section (Form) -->
     <div class="w-1/2 flex items-center justify-center p-8 py-6 my-7">
       <div class="w-full max-w-md">
@@ -112,39 +113,48 @@
 
   <!-- JavaScript for Handling Login -->
   <script>
-    document.getElementById('signInForm').addEventListener('submit', function(e) {
+    document.getElementById('signInForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
       const userType = document.querySelector('input[name="userType"]:checked').value;
 
+      let type = ''
+      if (userType === 'employer'){
+        type = 'emp'
+      } else {
+        type = 'user'
+      }
+
       // Send credentials to backend via POST request
-      fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, userType })
-      })
-      .then(response => {
+      try {
+        const response = await fetch(`http://localhost:3000/${type}/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, userType })
+        })
+
+        const data = await response.json();
+
         if (!response.ok) {
-          throw new Error('Login failed');
+          throw new Error(data.message || 'Login failed');
         }
-        return response.json();
-      })
-      .then(data => {
-        // Assume the backend returns a JSON object with a username property
+
+         // Store user data
         localStorage.setItem('username', data.username);
-        // Redirect to the appropriate dashboard
+        localStorage.setItem('userType', data.userType);
+
+        // Redirect based on user type
         if (userType === 'jobSeeker') {
-          window.location.href = './Dashboard-Jobseeker.html';
+          window.location.href = './dashboard-jobseeker.html';
         } else if (userType === 'employer') {
-          window.location.href = './Dashboard-Employer.html';
+          window.location.href = './dashboard-employer.html';
         }
-      })
-      .catch(error => {
-        console.error(error);
-        alert("Login failed: " + error.message);
-      });
+      } catch (error) {
+        console.error('Login error:', error);
+        alert(`Login failed: ${error.message}`);
+      }
     });
   </script>
 
