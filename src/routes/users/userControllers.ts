@@ -24,7 +24,7 @@ export async function signUp(req: Request, res: Response) {
         }
 
         if (!req.file) {
-            res.status(400).json({ msg: 'No profile picture uploaded'});
+            res.status(400).json({ msg: 'No profile picture uploaded' });
             return;
         }
 
@@ -35,12 +35,18 @@ export async function signUp(req: Request, res: Response) {
             skills = data.skills.split(',')
         }
 
+        if (data.student === 'Yes'){
+            data.student = true;
+        } else {
+            data.student = false;
+        }
+
         const newUser = new seekerModel({
             skills: skills,
             email: data.email,
             student: data.student,
             password: data.password,
-            userName: data.userName,
+            username: data.username,
             profile_pic: result.url,
             preferredJobType: data.preferredJobType,
             yearsOfExperience: data.yearsOfExperience,
@@ -52,7 +58,7 @@ export async function signUp(req: Request, res: Response) {
             newUser: user
         });
     } catch (error) {
-        console.log(data)
+        console.log(error)
         res.status(400).json({
             msg: `Something went wrong: ${error}`
         })

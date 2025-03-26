@@ -9,7 +9,7 @@ const seekerSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    userName: {
+    username: {
         type: String,
         required: true,
     },

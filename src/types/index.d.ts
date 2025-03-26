@@ -7,10 +7,10 @@ declare global {
         export interface Request {
             usrCredentials: {
                 email: string;
-                userName: string;
+                username: string;
                 password: string;
-                student: boolean;
                 profilePic?: string;
+                student: boolean | string;
                 preferredJobType?: string;
                 skills?: string | [string];
                 yearsOfExperience?: string;
